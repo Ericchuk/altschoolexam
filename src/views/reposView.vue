@@ -1,18 +1,15 @@
 <template>
  <section>
     <RepoS :repoData="datas"/>
-    <Pagination />
  </section>
 </template>
 
 <script>
 import RepoS from '../components/repos/repos.vue';
-import Pagination from '../components/pagination/pagination.vue';
  export default{
         name: 'ReposView',
          components: {
             RepoS,
-            Pagination,
          },
 
          data(){
