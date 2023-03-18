@@ -25,7 +25,7 @@ const router = createRouter({
             redirect:'/',
         },
         {
-            path:'/repos/:id',
+            path:'/repos/:username',
             name:'reposItem',
             component:RepoItem,
             props:true,
