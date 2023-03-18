@@ -26,7 +26,7 @@ const router = createRouter({
         },
         {
             path:'/repos/:username',
-            name:'reposItem',
+            name:'repoItem',
             component:RepoItem,
             props:true,
         },
