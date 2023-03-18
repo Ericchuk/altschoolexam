@@ -1,11 +1,9 @@
 <template>
  <section>
     <RepoS :repoData="datas" :loading="loading"/>
-    {{page}}
-   ` https://api.github.com/users/ericchuk/repos?page={{page}}&per_page=5`
-    <div class="paginate">
-      <button @click="decrementCount()">Prev</button>
-      <button @click="incrementCount()">Next</button>
+    <div class="paginate" :key="page_reload">
+      <button @click="decrementCount()" :disabled="page === 1" >Prev</button>
+      <button @click="incrementCount()" :disabled="page >= 5">Next</button>
     </div>
  </section>
 </template>
@@ -23,6 +21,7 @@
       datas:[],
       loading:false,
       page:1,
+      page_reload:0,
     }
   },
 
@@ -39,15 +38,33 @@
   },
 
   methods:{
+
+    fetchData(){
+    fetch(`https://api.github.com/users/ericchuk/repos?page=${this.page}&per_page=5`,{
+      headers: {
+        Accept: "application/json"
+      },
+    })
+    .then(res => res.json())
+    .then(this.loading = false)
+    .then(datas => (this.datas = datas))
+    },
+
+
     incrementCount(){
       this.page++;
-    },
+      this.fetchData();
+    },  
 
     decrementCount(){
       this.page--;
+      this.fetchData();
+    },
+
+    reload(){
+      this.page_reload++;
     }
-  },
-  
+  },  
  }
 </script>
 

@@ -11,3 +11,23 @@ export default {
     name: 'NotFound',
 }
 </script>
+
+<style scoped>
+ section{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+ }
+
+ h1{
+    font-size:150px;
+    font-weight:700;
+    margin:120px 0 0;
+    color:red;
+ }
+
+ p{
+    font-size:20px;
+ }
+</style>

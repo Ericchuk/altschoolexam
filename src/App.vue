@@ -18,9 +18,10 @@ export default {
     openMenu(){
       if(window.innerWidth > 700){
         console.log("eeeee")
-        this.nav = true;
+        this.nav = false;
       }else{
         console.log("erfff")
+        this.nav = true;
       }
       
     },
@@ -40,7 +41,7 @@ export default {
 
   
       <nav v-if="nav">
-         <img alt="coding" v-show="nav" src="../src/hamburger.png" @click="closeMenu()"/>
+         <img alt="coding" v-show="nav" src="../src/close.png" @click="closeMenu()"/>
          <li class="home"><router-link to="/">Home</router-link></li>
          <li><router-link to="/repos">Repos</router-link></li>
         <li><router-link to="/portfolio">Portfolio</router-link></li>
@@ -91,7 +92,7 @@ nav{
    flex-direction:column;
 }
 
-li{
+nav li{
     list-style-type:none;
     margin:15px 0;
     width:85%;
@@ -109,7 +110,7 @@ nav li a{
 nav img{
   filter:invert(100);
   position:absolute;
-  right:30px;
+  right:50px;
   top:40px;
 }
 
