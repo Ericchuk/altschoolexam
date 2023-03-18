@@ -42,9 +42,9 @@ export default {
   
       <nav v-if="nav">
          <img alt="coding" v-show="nav" src="../src/close.png" @click="closeMenu()"/>
-         <li class="home"><router-link to="/">Home</router-link></li>
-         <li><router-link to="/repos">Repos</router-link></li>
-        <li><router-link to="/portfolio">Portfolio</router-link></li>
+         <li @click="closeMenu()"  class="home"><router-link to="/">Home</router-link></li>
+         <li @click="closeMenu()" ><router-link to="/repos">Repos</router-link></li>
+        <li @click="closeMenu()" ><router-link to="/portfolio">Portfolio</router-link></li>
       </nav>
    </header>
    <router-view>

@@ -1,9 +1,11 @@
 <template>
  <section>
     <RepoS :repoData="datas" :loading="loading"/>
+    
     <div class="paginate" :key="page_reload">
       <button @click="decrementCount()" :disabled="page === 1" >Prev</button>
-      <button @click="incrementCount()" :disabled="page >= 5">Next</button>
+      <p>{{page}}</p>
+      <button @click="incrementCount()" :disabled="page >= 16">Next</button>
     </div>
  </section>
 </template>
@@ -27,7 +29,7 @@
 
   mounted(){
     this.loading = true
-    fetch(`https://api.github.com/users/ericchuk/repos?page=${this.page}&per_page=5`,{
+    fetch(`https://api.github.com/users/ericchuk/repos?page=${this.page}&per_page=10`,{
       headers: {
         Accept: "application/json"
       },
@@ -40,7 +42,7 @@
   methods:{
 
     fetchData(){
-    fetch(`https://api.github.com/users/ericchuk/repos?page=${this.page}&per_page=5`,{
+    fetch(`https://api.github.com/users/ericchuk/repos?page=${this.page}&per_page=10`,{
       headers: {
         Accept: "application/json"
       },
@@ -79,10 +81,20 @@
 
 .paginate button{
   margin:0 10px;
-  padding:10px;
+  padding:10px 20px;
   border:none;
-  background-color:transparent;
-  border:1px solid #000;
+  background-color: #1563C8;
   cursor:pointer;
+  border-radius:8px;
+  color:white;
+  font-size:20px;
+}
+
+.paginate p{
+  font-size:20px;
+  font-weight:700;
+  margin:0 20px;
+  color:#1563C8;
+  padding:10px 20px;
 }
 </style>
